@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
-class Registration extends Component {
+class Login extends Component {
   state = {
-    username: "",
     email: "",
-    rehashedPassword: ""
+    hashedPassword: ""
   };
 
   onChange = event => {
@@ -21,27 +20,18 @@ class Registration extends Component {
       }
     }
     // todo - send registration form
-    this.props.registerUser(this.state);
+    this.props.loginUser(this.state);
   };
 
   render() {
-    const { isRegistered } = this.props;
+    const { user } = this.props;
 
-    if (isRegistered) {
-      return <Redirect to="/login" />;
+    if (user.token) {
+      return <Redirect to="/" />;
     }
 
     return (
       <form onSubmit={this.onSubmit} className="col-6 ml-auto mr-auto">
-        <div className="form-group">
-          <label htmlFor="Email">Username</label>
-          <input
-            type="text"
-            name="username"
-            className="form-control"
-            onChange={this.onChange}
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="Email">Email</label>
           <input
@@ -55,17 +45,17 @@ class Registration extends Component {
           <label htmlFor="Email">Password</label>
           <input
             type="password"
-            name="rehashedPassword"
+            name="hashedPassword"
             className="form-control"
             onChange={this.onChange}
           />
         </div>
         <button type="submit" className="btn btn-success float-right mt-3">
-          Register
+          Login
         </button>
       </form>
     );
   }
 }
 
-export default Registration;
+export default Login;

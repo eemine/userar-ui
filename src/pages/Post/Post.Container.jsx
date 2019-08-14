@@ -1,17 +1,17 @@
 import { connect } from "react-redux";
-import { getPostsList } from "./Home.Actions";
-import Home from "./Home";
+import { getPostById } from "./Post.Action";
+import Post from "./Post";
 
 const mapStateToProps = state => ({
   user: state.user,
-  mediaList: state.mediaList
+  post: state.post
 });
 
 const mapDispatchToProps = {
-  getPostsList
+  getPostById
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Post);

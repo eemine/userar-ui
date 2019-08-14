@@ -1,17 +1,16 @@
 import { connect } from "react-redux";
-import { getPostsList } from "./Home.Actions";
-import Home from "./Home";
+import Login from "./Login";
+import { loginUser } from "./Login.Action";
 
 const mapStateToProps = state => ({
-  user: state.user,
-  mediaList: state.mediaList
+  user: state.user
 });
 
 const mapDispatchToProps = {
-  getPostsList
+  loginUser
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Login);

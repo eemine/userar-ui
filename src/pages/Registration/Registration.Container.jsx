@@ -3,7 +3,8 @@ import Registration from "./Registration";
 import { registerUser } from "./Registration.Actions";
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  isRegistered: state.isRegistered
 });
 
 const mapDispatchToProps = {
