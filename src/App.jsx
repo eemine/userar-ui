@@ -1,16 +1,17 @@
 import React, { Fragment } from "react";
-import Post from "./pages/Post";
-//import Post from "./components/posts/";
-//import Users from "./components/users/";
-//import User from "./components/users/";
-import About from "./pages/About";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NotificationSystem from "./Components/NotificationComponent";
+import Navigation from "./Components/Navigation";
+import PrivateRoute from "./Components/PrivateRoute";
+import Post from "./pages/Post";
+import User from "./pages/User";
+import Users from "./pages/Users";
+import About from "./pages/About";
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
-import NotificationSystem from "./Components/NotificationComponent";
-import Navigation from "./Components/Navigation";
+import Logout from "./pages/Logout";
 
 const App = () => {
   return (
@@ -18,13 +19,14 @@ const App = () => {
       <Router>
         <Navigation />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <PrivateRoute path="/" exact component={Home} /> :
           <Route path="/register" component={Registration} />
           <Route path="/login" component={Login} />
-          <Route path="/posts/:postId" component={Post} />
-          <Route path="/users" component={() => {}} />
-          <Route path="/users/self" component={() => {}} />
-          <Route path="/about" component={About} />
+          <Route path="/logout" component={Logout} />
+          <PrivateRoute path="/posts/:postId" componenent={Post} />
+          <PrivateRoute path="/about" componenent={About} />
+          <PrivateRoute path="/users" componenent={Users} />
+          <PrivateRoute path="/users/self" componenent={User} />
         </Switch>
       </Router>
       <NotificationSystem />

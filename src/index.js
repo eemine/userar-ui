@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import App from "./App";
+import App from "./Components/AppComponent";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(

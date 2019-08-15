@@ -1,4 +1,4 @@
-const mediaList = (state = {}, action) => {
+const mediaList = (state = [], action) => {
   if (action.type === "GET_MEDIA_LIST") {
     return action.payload;
   }

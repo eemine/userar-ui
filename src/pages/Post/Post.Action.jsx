@@ -5,7 +5,7 @@ const getPostById = (postId, token) => async dispatch => {
     headers: { authorization: `Bearer ${token}` }
   });
   if (result && result.status === 200) {
-    const { payload } = result.body;
+    const { payload } = result.data;
     dispatch({
       type: "GET_POST",
       payload
@@ -13,4 +13,21 @@ const getPostById = (postId, token) => async dispatch => {
   }
 };
 
-export { getPostById };
+const addComment = (postId, token, text) => async dispatch => {
+  const result = await axios.post(
+    `/api/v1/media/${postId}/comments`,
+    { text },
+    {
+      headers: { authorization: `Bearer ${token}` }
+    }
+  );
+  if (result && result.status === 200) {
+    const { payload } = result.data;
+    dispatch({
+      type: "ADD_COMMENT",
+      payload
+    });
+  }
+};
+
+export { getPostById, addComment };

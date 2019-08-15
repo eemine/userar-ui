@@ -1,18 +1,16 @@
 import { connect } from "react-redux";
-import { getPostById, addComment } from "./Post.Action";
-import Post from "./Post";
+import { getSelf } from "./User.Action";
+import User from "./User";
 
 const mapStateToProps = state => ({
-  user: state.user,
-  post: state.post
+  user: state.user
 });
 
 const mapDispatchToProps = {
-  getPostById,
-  addComment
+  getSelf
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Post);
+)(User);
